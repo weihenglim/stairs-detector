@@ -2,10 +2,9 @@ package com.example.stairsdetector
 
 import android.content.Context
 import android.hardware.*
+import android.os.*
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import com.example.stairsdetector.databinding.ActivityMainBinding
 import java.util.Queue
 import java.util.LinkedList
@@ -13,6 +12,7 @@ import java.util.LinkedList
 class MainActivity : AppCompatActivity(), SensorEventListener {
     private lateinit var binding: ActivityMainBinding
     private lateinit var sensorManager: SensorManager
+    private lateinit var vibrator: Vibrator
     private var mAccel: Sensor? = null
     private var mSigMotion: Sensor? = null
     private var mGravity: Sensor? = null
@@ -42,6 +42,8 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
 
         mAccel = sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION)
@@ -67,6 +69,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         // Do something here if sensor accuracy changes.
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onSensorChanged(event: SensorEvent) {
         if (event.sensor.type == Sensor.TYPE_LINEAR_ACCELERATION) {
             for (i in noise.indices) {
@@ -115,6 +118,12 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                         if (sigMotionCount > prevSigCount) {
                             stairCount += 1
                             binding.stairValue.text = stairCount.toString()
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                vibrator.vibrate(VibrationEffect.createOneShot(500,
+                                        VibrationEffect.DEFAULT_AMPLITUDE))
+                            } else {
+                                vibrator.vibrate(500)
+                            }
                         }
                     }, stairDetectDelay)
                 }
