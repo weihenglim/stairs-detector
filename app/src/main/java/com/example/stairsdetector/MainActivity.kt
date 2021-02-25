@@ -75,8 +75,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             }
         }
         if (event.sensor.type == Sensor.TYPE_GRAVITY) {
-
-            for (i in noise.indices) {
+            for (i in gravity.indices) {
                 gravity[i] = event.values[i]
             }
         }
