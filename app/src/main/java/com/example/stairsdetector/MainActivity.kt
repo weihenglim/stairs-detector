@@ -71,7 +71,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         // Do something here if sensor accuracy changes.
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onSensorChanged(event: SensorEvent) {
         if (event.sensor.type == Sensor.TYPE_LINEAR_ACCELERATION) {
             for (i in noise.indices) {
