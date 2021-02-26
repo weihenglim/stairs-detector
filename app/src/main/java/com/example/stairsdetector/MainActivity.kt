@@ -19,22 +19,23 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     private var noise = FloatArray(3)
     private var accelFiltered = FloatArray(3)
     private var gravity = FloatArray(3)
-    private val alpha = 0.1f
+    private val alpha = 0.15f
     private var sigMotionCount = 0
-    private val vertThreshold: Double = 4.0
-    private val vertMax: Double = 6.0
+    private val vertThreshold: Double = 3.0
+    private val vertMax: Double = 8.0
     private var vertAccelQueue: Queue<Double> = LinkedList<Double>()
-    private val queueSize = 20
-    private val errorMargin = 8
+    private val queueSize = 40
+    private val errorMargin = 18
     private var motionThreshold: Double? = null
-    private var restThreshold: Double = 1.0
+    private var restThreshold: Double = 1.2
     private var inVertMotion: Boolean = false
     private var prevSigCount = 0
     private var stairCount = 0
     private val stairDetectDelay: Long = 1000
     private var startTime: Int = 0
-    private val minMotionDuration = 3000
+    private val minMotionDuration = 2000
     private var calibrate = false
+    private var isCalculating = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -101,19 +102,22 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
         if (calibrate && vertAccelQueue.average() <= restThreshold) {
             calibrate = false
+            vertAccelQueue.clear()
         }
 
         if (kotlin.math.abs(vertAccel) >= vertMax) {
             inVertMotion = false
             calibrate = true
-        } else if (!calibrate){
+        } else if (!calibrate && !isCalculating){
             if (vertAccelQueue.average() >= motionThreshold!! && !inVertMotion) {
                 inVertMotion = true
                 prevSigCount = sigMotionCount
                 startTime = System.currentTimeMillis().toInt()
             } else if (vertAccelQueue.average() <= restThreshold && inVertMotion) {
                 inVertMotion = false
+                vertAccelQueue.clear()
                 if (System.currentTimeMillis().toInt() - startTime >= minMotionDuration) {
+                    isCalculating = true
                     Handler(Looper.getMainLooper()).postDelayed({
                         if (sigMotionCount > prevSigCount) {
                             stairCount += 1
@@ -125,6 +129,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                                 vibrator.vibrate(500)
                             }
                         }
+                        isCalculating = false
                     }, stairDetectDelay)
                 }
             }
@@ -137,10 +142,10 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     override fun onResume() {
         super.onResume()
         mAccel?.also { accel ->
-            sensorManager.registerListener(this, accel, SensorManager.SENSOR_DELAY_NORMAL)
+            sensorManager.registerListener(this, accel, SensorManager.SENSOR_DELAY_UI)
         }
         mGravity?.also { grav ->
-            sensorManager.registerListener(this, grav, SensorManager.SENSOR_DELAY_NORMAL)
+            sensorManager.registerListener(this, grav, SensorManager.SENSOR_DELAY_UI)
         }
     }
 
