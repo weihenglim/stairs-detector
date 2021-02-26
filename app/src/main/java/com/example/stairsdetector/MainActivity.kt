@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     private val alpha = 0.15f
     private var sigMotionCount = 0
     private val vertThreshold: Double = 3.0
+    private val avgThreshold: Double = 2.5
     private val vertMax: Double = 8.0
     private var vertAccelQueue: Queue<Double> = LinkedList<Double>()
     private val queueSize = 40
@@ -105,7 +106,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             vertAccelQueue.clear()
         }
 
-        if (kotlin.math.abs(vertAccel) >= vertMax) {
+        if (kotlin.math.abs(vertAccel) >= vertMax || vertAccelQueue.average() >= avgThreshold) {
             inVertMotion = false
             calibrate = true
         } else if (!calibrate && !isCalculating){
