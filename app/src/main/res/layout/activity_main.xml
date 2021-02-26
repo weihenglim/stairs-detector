@@ -54,148 +54,148 @@
         android:id="@+id/sigLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="476dp"
         android:text="Sig. Motion Count:"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vertAvgLabel" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/inMotionLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="524dp"
         android:text="Is Climbing:"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sigLabel" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/vertLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="356dp"
         android:text="Vertical Accel:"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/zLabel" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/vertAvgLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="400dp"
         android:text="Vertical Accel (avg):"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vertLabel" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/stairLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="576dp"
         android:text="Stairs Count:"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inMotionLabel" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/xValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="184dp"
         android:textAlignment="viewStart"
         android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/xLabel"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/yValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="232dp"
         android:textAlignment="viewStart"
         android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/yLabel"
-        app:layout_constraintTop_toBottomOf="@+id/xValue" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/zValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="276dp"
         android:textAlignment="viewStart"
         android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/zLabel"
-        app:layout_constraintTop_toBottomOf="@+id/yValue" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/sigValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginStart="256dp"
+        android:layout_marginTop="476dp"
         android:text="0"
         android:textAlignment="viewStart"
         android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/sigLabel"
-        app:layout_constraintTop_toBottomOf="@+id/vertAvgValue" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/inVertMotionValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="256dp"
+        android:layout_marginTop="524dp"
         android:text="false"
         android:textAlignment="viewStart"
         android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/inMotionLabel"
-        app:layout_constraintTop_toBottomOf="@+id/sigValue" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/vertValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="256dp"
+        android:layout_marginTop="356dp"
         android:text="0"
         android:textAlignment="viewStart"
         android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/vertLabel"
-        app:layout_constraintTop_toBottomOf="@+id/zValue" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/vertAvgValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="256dp"
+        android:layout_marginTop="400dp"
         android:text="0"
         android:textAlignment="viewStart"
         android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/vertAvgLabel"
-        app:layout_constraintTop_toBottomOf="@+id/vertValue" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/stairValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="256dp"
+        android:layout_marginTop="576dp"
         android:text="0"
         android:textAlignment="viewStart"
         android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/stairLabel"
-        app:layout_constraintTop_toBottomOf="@+id/inVertMotionValue" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
